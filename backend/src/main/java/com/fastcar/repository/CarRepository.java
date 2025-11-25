@@ -1,5 +1,10 @@
 package com.fastcar.repository;
 
-public class CarRepository {
+import com.fastcar.model.Car;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CarRepository extends JpaRepository<Car, String> {
     
 }
