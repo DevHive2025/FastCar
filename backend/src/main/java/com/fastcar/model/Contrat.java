@@ -18,7 +18,7 @@ public class Contrat {
     private Agent agent;
 
     @ManyToOne
-    @JoinColumn(name = "cin", nullable = false)
+    @JoinColumn(name = "cin_client", nullable = false)
     private Client client;
 
     @Column(name = "date_debut", nullable = false)

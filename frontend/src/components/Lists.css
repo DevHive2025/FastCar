@@ -1,4 +1,4 @@
-.car-list-container {
+.container {
   padding: 30px;
   background: white;
   border-radius: 10px;
@@ -61,38 +61,42 @@
 
 .table-container {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 350px; 
   margin: 20px 0;
 }
 
-.cars-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   background: white;
 }
 
-.cars-table thead {
+.table thead {
+  position: sticky;
+  top: 0;
   background-color: #4a5568;
   color: white;
 }
 
-.cars-table th {
+.table th {
   padding: 12px;
   text-align: left;
   font-weight: 600;
   font-size: 14px;
 }
 
-.cars-table td {
+.table td {
   padding: 12px;
   border-bottom: 1px solid #e2e8f0;
   font-size: 14px;
 }
 
-.cars-table tbody tr:hover {
+.table tbody tr:hover {
   background-color: #f7fafc;
 }
 
-.cars-table tbody tr:last-child td {
+.table tbody tr:last-child td {
   border-bottom: none;
 }
 
@@ -126,9 +130,9 @@
   display: flex;
   gap: 15px;
   align-items: center;
-  margin-top: 20px;
   flex-wrap: wrap;
 }
+
 
 .btn {
   padding: 10px 20px;
@@ -187,7 +191,6 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 18px;
   color: #666;
 }
 
@@ -205,4 +208,17 @@
   font-size: 18px;
   color: #666;
 }
+.action-icons {
+  display: flex;       
+  justify-content:space-between; 
+  color :#4a5568 ;   
+}
 
+.action-icons svg {
+  cursor: pointer; 
+  transition: color 0.2s;
+}
+
+.action-icons svg:hover {
+  color: #1d4ed8;  
+}

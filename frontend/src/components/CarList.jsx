@@ -1,23 +1,23 @@
 
 import { carAPI } from '../services/api';
-import './CarList.css';
+import './Lists.css';
+import { FaTrash , FaPlus, FaSearch, FaSyncAlt} from 'react-icons/fa';
 
 function CarList (){
 
   return (
-    <div className="car-list-container">
+    <div className="container">
       <div className="header-section">
         <div>
-          <h2 className="module-title">MODULE LISTE DES VOITURES</h2>
-          <p className="content-zone">ZONE DE CONTENU</p>
+          <h2 className="module-title">LISTE DES VOITURES</h2>
         </div>
         <button className="btn btn-refresh"  title="Actualiser">
-          🔄 Actualiser
+          <FaSyncAlt /> Actualiser
         </button>
       </div>
 
       <div className="table-container">
-        <table className="cars-table">
+        <table className="table">
           <thead>
             <tr>
               <th>Matricule</th>
@@ -33,10 +33,10 @@ function CarList (){
 
       <div className="action-buttons">
         <button className="btn btn-add" >
-          <span>+</span> Ajouter
+          <FaPlus /> Ajouter
         </button>
         <button className="btn btn-delete" >
-          🗑️ Supprimer
+          <FaTrash /> Supprimer
         </button>
         <div className="search-box">
           <input
@@ -44,7 +44,7 @@ function CarList (){
             placeholder="Rechercher..."
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
+          <FaSearch className="search-icon" />
         </div>
       </div>
     </div>

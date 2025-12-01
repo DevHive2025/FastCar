@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import CarList from './components/CarList';
-//hdusj
+import ContratList from './components/ContratList';
+
 function App() {
   const [activeMenu, setActiveMenu] = useState('cars');
 
@@ -26,7 +27,7 @@ function App() {
       case 'agents':
         return <div className="content-placeholder">Gérer les Agents - À venir</div>;
       case 'contrats':
-        return <div className="content-placeholder">Gérer les Contrats - À venir</div>;
+        return <ContratList />;
       case 'invoice':
         return <div className="content-placeholder">Imprimer une Facture - À venir</div>;
       case 'settings':

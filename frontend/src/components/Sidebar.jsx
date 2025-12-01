@@ -1,15 +1,16 @@
 import React from 'react';
 import './Sidebar.css';
+import { FaFileContract , FaCar, FaUsers, FaUserTie, FaPrint, FaCog, FaSignOutAlt} from 'react-icons/fa';
 
 const Sidebar = ({ activeMenu, onMenuChange }) => {
   const menuItems = [
-    { id: 'cars', label: 'Gérer les Voitures', icon: '🚗' },
-    { id: 'clients', label: 'Gérer les Clients', icon: '👤' },
-    { id: 'agents', label: 'Gérer les Agents', icon: '👥' },
-    { id: 'contrats', label: 'Gérer les Contrats', icon: '📄' },
-    { id: 'invoice', label: 'Imprimer une Facture', icon: '🖨️' },
-    { id: 'settings', label: 'Paramètres', icon: '⚙️' },
-    { id: 'logout', label: 'Déconnexion', icon: '🔌' },
+    { id: 'cars', label: 'Gérer les Voitures', icon: <FaCar size={20} /> },
+    { id: 'clients', label: 'Gérer les Clients', icon: <FaUsers size={20} /> },
+    { id: 'agents', label: 'Gérer les Agents', icon: <FaUserTie size={20} /> },
+    { id: 'contrats', label: 'Gérer les Contrats', icon: <FaFileContract size={20} />},
+    { id: 'invoice', label: 'Imprimer une Facture', icon: <FaPrint size={20} /> },
+    { id: 'settings', label: 'Paramètres', icon: <FaCog size={20} /> },
+    { id: 'logout', label: 'Déconnexion', icon: <FaSignOutAlt size={20} /> },
   ];
 
   return (

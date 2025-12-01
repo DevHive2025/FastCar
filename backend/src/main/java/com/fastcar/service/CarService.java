@@ -1,10 +1,13 @@
 package com.fastcar.service;
 
 import com.fastcar.model.Car;
+import com.fastcar.model.Contrat;
 import com.fastcar.repository.CarRepository;
+import com.fastcar.repository.ContratRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +16,8 @@ public class CarService {
     
     @Autowired
     private CarRepository carRepository;
+    @Autowired
+    private ContratRepository contratRepository;
     
     public List<Car> getAllCars() {
         return carRepository.findAll();
@@ -49,6 +54,16 @@ public class CarService {
     }
     
     public boolean existsById(String matricule) {
-        return carRepository.existsById(matricule);
+            return carRepository.existsById(matricule);
+        }
+        public boolean isCarAvailable(String matricule, LocalDate dateDebut, LocalDate dateFin) {
+
+        if (dateDebut == null || dateFin == null || dateDebut.isAfter(dateFin)) {
+            throw new IllegalArgumentException("Dates invalides");
+        }
+
+        List<Contrat> conflicts = contratRepository.findConflictingContrats(matricule, dateDebut, dateFin);
+
+        return conflicts.isEmpty();
     }
 }
