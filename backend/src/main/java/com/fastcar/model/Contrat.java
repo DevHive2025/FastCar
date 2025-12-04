@@ -6,7 +6,6 @@ import java.time.LocalDate;
 @Entity
 public class Contrat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String numContrat;
 
     @ManyToOne

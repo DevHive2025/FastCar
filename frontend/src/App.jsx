@@ -18,7 +18,7 @@ function App() {
     }
   };
 
-  const renderContent = () => {
+  const renderContent = () => { 
     switch (activeMenu) {
       case 'cars':
         return <CarList />;

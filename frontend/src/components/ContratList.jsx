@@ -1,33 +1,18 @@
 
-import { contratAPI } from '../services/api';
+import {useFetchcontrats} from '../services/fetch'
 import { useState, useEffect } from 'react';
 import './Lists.css';
 import { FaTrash , FaPlus, FaSearch, FaSyncAlt, FaEdit, FaPrint} from 'react-icons/fa';
-
-
 function ContratList (){
-    const [contrats, setContrats] = useState([]);
+    const { contrats } = useFetchcontrats();
     const [search, setSearch] = useState("");
-    const fetchContrats = async () => {
-        try {
-            const response = await contratAPI.getAll();
-            setContrats(response.data);
-        } catch (error) {
-            console.error("Erreur lors du chargement des contrats:", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchContrats();
-    }, []);
-
     return (
         <div className="container">
         <div className="header-section">
             <div>
             <h2 className="module-title">LISTE DES CONTRATS ENREGESTRE</h2>
             </div>
-            <button className="btn btn-refresh"  title="Actualiser" onClick={fetchContrats}>
+            <button className="btn btn-refresh"  title="Actualiser" >
                     <FaSyncAlt size={20} /> Actualiser
             </button>
         </div>
