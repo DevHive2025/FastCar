@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import CarList from './components/CarList';
+import Facture from './components/FactureListe';
 import ContratList from './components/ContratList';
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
       case 'contrats':
         return <ContratList />;
       case 'invoice':
-        return <div className="content-placeholder">Imprimer une Facture - À venir</div>;
+        return <Facture/> ;
       case 'settings':
         return <div className="content-placeholder">Paramètres - À venir</div>;
       default:
