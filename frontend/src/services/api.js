@@ -17,7 +17,14 @@ const createAPI = (resource) => ({
   delete: (id) => api.delete(`/${resource}/${id}`),
 });
 
-export const carAPI = createAPI('cars');
+export const carAPI = {
+  ...createAPI('cars'),
+  checkDisponibilite: (matricule, dateDebut, dateFin) =>
+    api.get(`/cars/${matricule}/disponible`, {
+      params: { dateDebut, dateFin }
+    }),
+};
 export const agentAPI = createAPI('agents');
 export const clientAPI = createAPI('clients');
 export const contratAPI = createAPI('contrats');
+

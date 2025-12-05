@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import CarList from './components/CarList';
-//hdusj
+import Facture from './components/FactureListe';
+import ContratList from './components/ContratList';
+import ClientTable from './components/clientPage';
+import AgentTable from './components/AgentPage';
+
 function App() {
   const [activeMenu, setActiveMenu] = useState('cars');
 
@@ -17,18 +21,18 @@ function App() {
     }
   };
 
-  const renderContent = () => {
+  const renderContent = () => { 
     switch (activeMenu) {
       case 'cars':
         return <CarList />;
       case 'clients':
-        return <div className="content-placeholder">Gérer les Clients - À venir</div>;
+        return <ClientTable/>;
       case 'agents':
-        return <div className="content-placeholder">Gérer les Agents - À venir</div>;
+        return <AgentTable/>;
       case 'contrats':
-        return <div className="content-placeholder">Gérer les Contrats - À venir</div>;
+        return <ContratList />;
       case 'invoice':
-        return <div className="content-placeholder">Imprimer une Facture - À venir</div>;
+        return <Facture/> ;
       case 'settings':
         return <div className="content-placeholder">Paramètres - À venir</div>;
       default:

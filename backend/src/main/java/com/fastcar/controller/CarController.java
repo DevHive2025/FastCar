@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,21 @@ public class CarController {
         return car.map(ResponseEntity::ok)
                   .orElse(ResponseEntity.notFound().build());
     }
-    
+
+    @GetMapping("/{matricule}/disponible")
+    public ResponseEntity<Boolean> checkDisponibilite(
+            @PathVariable String matricule,
+            @RequestParam("dateDebut") String dateDebutStr,
+            @RequestParam("dateFin") String dateFinStr) {
+        
+        LocalDate dateDebut = LocalDate.parse(dateDebutStr);
+        LocalDate dateFin = LocalDate.parse(dateFinStr);
+
+        boolean disponible = carService.isCarAvailable(matricule, dateDebut, dateFin);
+
+        return ResponseEntity.ok(disponible);
+    }
+
     @PostMapping
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
         Car createdCar = carService.createCar(car);
