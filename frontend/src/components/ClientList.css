@@ -1,0 +1,155 @@
+/* -------------------------------------- */
+/* Style du Conteneur Principal de la Liste */
+/* -------------------------------------- */
+.client-list-container { /* Classe recommandée pour le conteneur principal */
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Style du Titre du Module */
+.module-title { /* Utilisé pour le H2 dans le JSX */
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #007bff; /* Couleur d'accentuation */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* -------------------------------------- */
+/* Style Structurel et des En-têtes */
+/* -------------------------------------- */
+
+.header-section {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px;
+}
+
+.action-buttons {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee; 
+}
+
+/* -------------------------------------- */
+/* Style du Tableau et des Cellules */
+/* -------------------------------------- */
+.table-data { /* Classe pour la balise <table> dans le JSX */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-data thead tr {
+    background-color: #4a5568; 
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-data th,
+.table-data td {
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+    /* Ajustement pour les actions qui prennent de la place */
+    white-space: nowrap; 
+}
+
+/* -------------------------------------- */
+/* Style des Lignes et Effets au Survol */
+/* -------------------------------------- */
+
+.table-data tbody tr {
+    border-bottom: 1px solid #ececec;
+    transition: background-color 0.3s ease;
+}
+
+.table-data tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-data tbody tr:hover {
+    background-color: #fafafa;
+}
+
+/* -------------------------------------- */
+/* Styles des Boutons d'Action */
+/* -------------------------------------- */
+
+/* Style de base pour tous les boutons */
+.btn {
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Bouton Actualiser */
+.btn-refresh {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 15px; 
+}
+
+/* Bouton Ajouter */
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+}
+
+/* Bouton Modifier (dans les lignes du tableau) */
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+/* Bouton Supprimer (dans les lignes du tableau) */
+.btn-delete-row {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* -------------------------------------- */
+/* Styles de la Barre de Recherche */
+/* -------------------------------------- */
+
+.search-box {
+    position: relative;
+}
+
+.search-input {
+    padding: 10px 15px 10px 35px; /* Espace pour l'icône */
+    border-radius: 4px; 
+    border: 1px solid #ccc;
+    width: 250px;
+}
+.search-icon {
+    position: absolute; 
+    left: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #888;
+    pointer-events: none; /* Empêche l'icône de bloquer la saisie */
+}

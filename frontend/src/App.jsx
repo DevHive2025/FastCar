@@ -4,6 +4,8 @@ import Sidebar from './components/Sidebar';
 import CarList from './components/CarList';
 import Facture from './components/FactureListe';
 import ContratList from './components/ContratList';
+import ClientTable from './components/clientPage';
+import AgentTable from './components/AgentPage';
 
 function App() {
   const [activeMenu, setActiveMenu] = useState('cars');
@@ -24,9 +26,9 @@ function App() {
       case 'cars':
         return <CarList />;
       case 'clients':
-        return <div className="content-placeholder">Gérer les Clients - À venir</div>;
+        return <ClientTable/>;
       case 'agents':
-        return <div className="content-placeholder">Gérer les Agents - À venir</div>;
+        return <AgentTable/>;
       case 'contrats':
         return <ContratList />;
       case 'invoice':
