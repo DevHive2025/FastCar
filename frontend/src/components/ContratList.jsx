@@ -3,11 +3,14 @@ import { contratAPI } from '../services/api';
 import { useState, useEffect } from 'react';
 import './Lists.css';
 import { FaTrash , FaPlus, FaSearch, FaSyncAlt, FaEdit, FaPrint} from 'react-icons/fa';
+import {FiSave} from 'react-icons/fi';
 
 
 function ContratList (){
     const [contrats, setContrats] = useState([]);
     const [search, setSearch] = useState("");
+    const [showForm, setShowForm] = useState(false);
+
     const fetchContrats = async () => {
         try {
             const response = await contratAPI.getAll();
@@ -68,7 +71,7 @@ function ContratList (){
         </div>
 
         <div className="action-buttons">
-            <button className="btn btn-add" >
+            <button className="btn btn-add" onClick={() => setShowForm(true)} >
             <FaPlus size={20} /> Ajouter
             </button>
             <button className="btn btn-delete" >
@@ -85,6 +88,39 @@ function ContratList (){
             <FaSearch className="search-icon" size={20}/>
             </div>
         </div>
+        {showForm && (
+            <div className="modal-overlay">
+                <div className="modal-content">
+                <h3>Ajouter un nouveau contrat</h3>
+
+                <form className="form-contrat">
+                    <label>Numéro Contrat :</label>
+                    <input type="text" />
+
+                    <label>CIN Client :</label>
+                    <input type="text" />
+
+                    <label>Matricule Voiture :</label>
+                    <input type="text" />
+
+                    <label>Date Début :</label>
+                    <input type="date" />
+
+                    <label>Date Fin :</label>
+                    <input type="date" />
+
+                    <div className="modal-actions">
+                    <button className="btn" type="submit"><FiSave />Enregistrer</button>
+                    <button className="btn btn-delete" onClick={() => setShowForm(false)}>
+                        Annuler
+                    </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        )}
+
+
         </div>
     );
 };
