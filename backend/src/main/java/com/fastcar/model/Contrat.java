@@ -6,7 +6,6 @@ import java.time.LocalDate;
 @Entity
 public class Contrat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String numContrat;
 
     @ManyToOne
@@ -27,7 +26,7 @@ public class Contrat {
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
 
-    @Column(length = 30, name = "Mod_paiement", nullable = false)
+    @Column(length = 30, name = "mod_paiement", nullable = false)
     private String ModPaiement;
     
     // Getters and Setters

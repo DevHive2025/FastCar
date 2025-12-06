@@ -18,6 +18,7 @@
   font-weight: bold;
   margin: 0 0 5px 0;
   color: #333;
+   border-bottom: none;
 }
 
 .content-zone {
@@ -79,7 +80,7 @@
   color: white;
 }
 
-.table th {
+.table th { 
   padding: 12px;
   text-align: left;
   font-weight: 600;
@@ -115,13 +116,12 @@
   font-weight: 600;
 }
 
-.status-badge.disponible {
+.status-badge.Disponible {
   background-color: #c6f6d5;
   color: #22543d;
 }
 
-.status-badge.louée,
-.status-badge.en-location {
+.status-badge.Louée {
   background-color: #fed7d7;
   color: #742a2a;
 }
@@ -210,7 +210,7 @@
 }
 .action-icons {
   display: flex;       
-  justify-content:space-between; 
+  justify-content:space-around; 
   color :#4a5568 ;   
 }
 
@@ -254,3 +254,141 @@
     margin-top: 15px;
 }
 
+
+.facture-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #2c3e50;
+}
+
+.agence-title {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.facture-title {
+  color: #e74c3c;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+/* Titres des sections */
+.section-title {
+  background: linear-gradient(to right, #3498db, #2980b9);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/*table*/
+.facture-table-container {
+  margin-bottom: 40px;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.facture-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.facture-table thead {
+  background: linear-gradient(to right, #2c3e50, #34495e);
+  color: white;
+}
+
+.facture-table th {
+  padding: 18px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.facture-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+.facture-table tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+.facture-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+/* Pied de page */
+.facture-footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 2px solid #ecf0f1;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+.facture-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px dashed #bdc3c7;
+}
+.btn-return {
+  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-return:hover {
+  background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(127, 140, 141, 0.3);
+}
+
+.btn-print {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-print:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
