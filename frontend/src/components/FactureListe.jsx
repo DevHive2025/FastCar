@@ -1,26 +1,30 @@
 
 import {useFetchcontrats} from '../services/fetch'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import './Lists.css';
 import { FaTrash , FaPlus, FaSearch, FaSyncAlt, FaEdit, FaPrint, FaCalendarAlt, FaCar, FaUser,FaFileInvoice,FaArrowLeft} from 'react-icons/fa';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useParams,useNavigate ,useLocation} from 'react-router-dom';
 function Facture (){
     const { contrats } = useFetchcontrats();
+        const location = useLocation();
+        if (location.pathname === '/facture') {
+        return (
+            <div className="flex flex-col justify-center items-center h-screen">
+                <FactureList contrats={contrats} />
+            </div>
+        );
+    }
   return (
-    <Router>
       <div className="flex flex-col  	justify-center	items-center h-screen">
-        
         <Routes>
           <Route path="/" element={<FactureList contrats={contrats} />} />
-          <Route path="/facture/:numContrat" element={<FactureDetail contrats={contrats} />} />
+          <Route path="/:numContrat" element={<FactureDetail contrats={contrats} />} />
         </Routes>
       </div>
-    </Router>
   );
 };
 function FactureList({contrats}){
     const [search, setSearch] = useState("");
-
     return (
         <div className="container">
         <div className="header-section">
@@ -78,10 +82,19 @@ function FactureList({contrats}){
     );
 }
 function FactureDetail({contrats}){
-      const { numContrat } = useParams();      
+      const { numContrat } = useParams();   
+      const factureRef = useRef(null);
+      const navigate = useNavigate();
       const contrat = contrats.find (c => c.numContrat == String(numContrat));
-      const [search, setSearch] = useState("");
-
+      const handlePrint = () => {
+            const printContent = factureRef.current.innerHTML;
+            const originalContent = document.body.innerHTML;
+            
+            document.body.innerHTML = printContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+            window.location.reload(); 
+      }
       const calculerMontant = ()=>{
         if (!contrat) return 0;
 
@@ -105,7 +118,8 @@ function FactureDetail({contrats}){
     );
   }
     return (
-        <div className="container">
+        <>
+        <div className="container" ref={factureRef}>
         <div className="facture-header">
             <div>
             <h1 className="facture-title">FACTURE DE LOCATION </h1>
@@ -217,18 +231,17 @@ function FactureDetail({contrats}){
             <p style={{ marginTop: '20px' }}>Tél : 05 22 33 44 56 | RC : 123456 | Patente : 78901432</p>
             <p style={{ marginTop: '20px' }}>Merci de Votre confiance !</p>
         </div>
-
+        </div>
         <div className="facture-actions">
-            <Link to={`/`} className='btn-return'>
+            <Link to={`/facture`} className='btn-return'>
             <FaArrowLeft /> Retour à la liste
             </Link>
-            <button className='btn-print' onClick={()=>window.print()}>
+            <button className='btn-print' onClick={handlePrint}>
                 <FaPrint/>Imprimer la facture
             </button>
         </div>
-        </div>
+        </>
     );
 }
-
 export default Facture;
 

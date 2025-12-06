@@ -3,6 +3,7 @@ import {useFetchcontrats} from '../services/fetch'
 import { useState, useEffect } from 'react';
 import './Lists.css';
 import { FaTrash , FaPlus, FaSearch, FaSyncAlt, FaEdit, FaPrint} from 'react-icons/fa';
+import {Link} from 'react-router-dom' ;
 function ContratList (){
     const { contrats } = useFetchcontrats();
     const [search, setSearch] = useState("");
@@ -42,7 +43,9 @@ function ContratList (){
                             <td>{contrat.car.matricule}</td>
                             <td>{contrat.dateDebut} - {contrat.dateFin}</td>
                             <td className='action-icons'>
-                                <FaPrint size={20} /> 
+                                <Link to={`/facture/${contrat.numContrat}`}>
+                                <FaPrint size={20}  /> 
+                                </Link>
                                 <FaEdit size={20} />
                                 <FaTrash size={20} />
                             </td>

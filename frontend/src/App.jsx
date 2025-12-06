@@ -6,39 +6,10 @@ import Facture from './components/FactureListe';
 import ContratList from './components/ContratList';
 import ClientTable from './components/clientPage';
 import AgentTable from './components/AgentPage';
+import { Routes, Route, Navigate, useLocation  } from 'react-router-dom';
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState('cars');
 
-  const handleMenuChange = (menuId) => {
-    if (menuId === 'logout') {
-      if (window.confirm('Êtes-vous sûr de vouloir vous déconnecter?')) {
-        // Handle logout logic here
-        console.log('Logout');
-      }
-    } else {
-      setActiveMenu(menuId);
-    }
-  };
-
-  const renderContent = () => { 
-    switch (activeMenu) {
-      case 'cars':
-        return <CarList />;
-      case 'clients':
-        return <ClientTable/>;
-      case 'agents':
-        return <AgentTable/>;
-      case 'contrats':
-        return <ContratList />;
-      case 'invoice':
-        return <Facture/> ;
-      case 'settings':
-        return <div className="content-placeholder">Paramètres - À venir</div>;
-      default:
-        return <CarList />;
-    }
-  };
 
   return (
     <div className="app-container">
@@ -46,9 +17,17 @@ function App() {
         <h1>FASTCAR LOCATION - Gestion Centrale</h1>
       </header>
       <div className="app-body">
-        <Sidebar activeMenu={activeMenu} onMenuChange={handleMenuChange} />
+        <Sidebar />
         <main className="main-content">
-          {renderContent()}
+          <Routes>
+            <Route path="/" element={<Navigate to="/cars" replace />} />
+            <Route path="/cars" element={<CarList />} />
+            <Route path="/clients" element={<ClientTable />} />
+            <Route path="/agents" element={<AgentTable />} />
+            <Route path="/contrats" element={<ContratList />} />
+            <Route path="/facture/*" element={<Facture />} /> {/* Note: Facture avec ses propres routes internes */}
+            <Route path="/settings" element={<div className="content-placeholder">Paramètres - À venir</div>} />
+            </Routes>
         </main>
       </div>
     </div>
