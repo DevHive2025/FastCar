@@ -14,7 +14,9 @@ function CarPage() {
     matricule: "",
     marque: "",
     modele: "",
-    prix: ""
+    prix: "",
+    etat : "",
+    kilometrage : ""
   });
   const [isEditing, setIsEditing] = useState(false);
 
@@ -28,7 +30,7 @@ function CarPage() {
   };
 
   const handleAddClick = () => {
-    setModalData({ matricule: "", marque: "", modele: "", prix: "" });
+    setModalData({ matricule: "", marque: "", modele: "", prix: "", etat : "", kilometrage : "" });
     setIsEditing(false);
     setShowModal(true);
   };
@@ -49,7 +51,7 @@ function CarPage() {
     if (isEditing) await updateCar(modalData.matricule, modalData);
     else await addCar(modalData);
     setShowModal(false);
-    fetchCars(); // إعادة تحميل البيانات بعد التغيير
+    fetchCars();
   };
 
   const handleDelete = async (matricule) => {

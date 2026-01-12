@@ -54,11 +54,11 @@ export const useContrats = () => {
     }
   };
 
-  const deleteContrat = async (id) => {
+  const deleteContrat = async (numContrat) => {
     setLoading(true);
     try {
-      await contratAPI.delete(id);
-      setContrats(prev => prev.filter(c => c.id !== id));
+      await contratAPI.delete(numContrat);
+      setContrats(prev => prev.filter(c => c.numContrat !== numContrat));
       setError(null);
     } catch (err) {
       console.error(err);
@@ -110,7 +110,6 @@ export const useCars = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // جلب كل السيارات
   const fetchCars = async () => {
     setLoading(true);
     setError(null);

@@ -15,7 +15,7 @@ function AgentModal({ show, onClose, data, handleChange, handleSubmit, loading, 
 
         <form className="modal-form" onSubmit={handleSubmit}>
           
-          <label>Matricule</label>
+          <label>N Agent</label>
           <input
             type="text"
             name="numAgent"

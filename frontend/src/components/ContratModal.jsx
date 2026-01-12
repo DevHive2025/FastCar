@@ -9,7 +9,7 @@ export default function ContratModal({ show, onClose, data, handleChange, handle
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        {/* زر الإغلاق */}
+
         <button className="modal-close" onClick={onClose}>
             <AiOutlineClose size={24} />
         </button>

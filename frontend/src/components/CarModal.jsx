@@ -41,12 +41,33 @@ function CarModal({ show, onClose, data, handleChange, handleSubmit, isEditing }
             onChange={handleChange}
             required
           />
-
-          <label>Prix Journalier</label>
+          <div className="date-row">
+            <div className="date-field">
+              <label>Kilometrage</label>
+              <input
+                type="number"
+                name="kilometrage"
+                value={data.kilometrage}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="date-field">
+              <label>Prix Journalier</label>
+              <input
+                type="number"
+                name="prix"
+                value={data.prix}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <label>etat</label>
           <input
-            type="number"
-            name="prix"
-            value={data.prix}
+            type="text"
+            name="etat"
+            value={data.etat}
             onChange={handleChange}
             required
           />

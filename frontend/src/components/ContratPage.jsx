@@ -25,7 +25,16 @@ function ContratPage() {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  // توليد رقم العقد
+  const aujourdhuiYYYYMMDD = new Date().toISOString().split('T')[0];
+
+  const getEtat = (matricule) => {
+    const contratActif = contrats.find(c =>
+      c.car?.matricule === matricule && new Date(c.dateFin) >= new Date(aujourdhuiYYYYMMDD)
+    );
+    return contratActif ? 'Louée' : 'Disponible';
+  };
+
+
   const generateNumContrat = () => {
     const year = new Date().getFullYear();
     let lastNumber = 0;
@@ -68,9 +77,12 @@ function ContratPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Données envoyées:", modalData);
-    if (isEditing) await updateContrat(modalData.numContrat, modalData);
-    else await addContrat(modalData);
+    if (modalData.car.matricule && getEtat(modalData.car.matricule)==='Disponible' && !isEditing) {
+        await addContrat(modalData);
+    }
+    else if (isEditing) {
+      await updateContrat(modalData.numContrat, modalData);
+    }
     setShowModal(false);
   };
 

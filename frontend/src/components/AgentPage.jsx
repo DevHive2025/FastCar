@@ -40,7 +40,7 @@ function AgentPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) await updateAgent(modalData.matricule, modalData);
+    if (isEditing) await updateAgent(modalData.numAgent, modalData);
     else await addAgent(modalData);
     setShowModal(false);
     fetchAgents();
@@ -80,7 +80,7 @@ function AgentPage() {
 
           <tbody>
             {filteredAgents.map(agent => (
-              <tr key={agent.matricule}>
+              <tr key={agent.numAgent}>
                 <td>{agent.numAgent}</td>
                 <td>{agent.nom}</td>
                 <td>{agent.prenom}</td>
